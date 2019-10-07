@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+#$ErrorActionPreference = "Stop"
 $versao = $args[0]
 $url = $args[1]
 $nomesvc = $args[2]
