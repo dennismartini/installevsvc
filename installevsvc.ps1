@@ -3,7 +3,6 @@ $versao = $args[0]
 $url = $args[1]
 $nomesvc = $args[2]
 function instalar {
- write-output $versao > "c:\puppet\arquivos\EVServiceVersion"
  write-host "Baixando Serviço"
  $fullpath = "c:\puppet\arquivos\evupsvc$versao.msi"
  $start_time = Get-Date
@@ -24,5 +23,6 @@ function instalar {
  write-host "Instalando serviço"
  Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /package $fullpath" -Passthru
  Write-host "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
+ write-output $versao > "c:\puppet\arquivos\EVServiceVersion"
 }
 instalar
