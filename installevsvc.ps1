@@ -1,4 +1,3 @@
-#$ErrorActionPreference = "Stop"
 $versao = $args[0]
 $url = $args[1]
 $nomesvc = $args[2]
@@ -15,6 +14,7 @@ function instalar {
  write-host "Deletando serviço"
  $result = sc delete $nomesvc
  write-host $result
+ #$ErrorActionPreference = "Stop"
  write-host "Rodando MSIZAP"
  $msizap = cmd /c "c:\puppet\arquivos\MsiZap.Exe TW! {85BEAE77-93F3-4155-BFAF-17915E071027}"
  $msizap[0..5]
@@ -24,5 +24,6 @@ function instalar {
  Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /package $fullpath" -Passthru
  Write-host "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
  write-output $versao > "c:\puppet\arquivos\EVServiceVersion"
+ 
 }
 instalar
